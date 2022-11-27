@@ -1,0 +1,15 @@
+/*
+ * lightLed.h
+ *
+ *  Created on: Nov 22, 2022
+ *      Author: duyvt
+ */
+
+#ifndef INC_LIGHTLED_H_
+#define INC_LIGHTLED_H_
+
+#include "global.h"
+
+
+
+#endif /* INC_LIGHTLED_H_ */

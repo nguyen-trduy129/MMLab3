@@ -1,0 +1,18 @@
+/*
+ * lightLed.h
+ *
+ *  Created on: Nov 22, 2022
+ *      Author: duyvt
+ */
+
+#ifndef INC_LIGHTLED_H_
+#define INC_LIGHTLED_H_
+
+#include "global.h"
+
+extern int redTime;
+extern int yellowTime;
+extern int greenTime;
+extern int currentTime;
+
+#endif /* INC_LIGHTLED_H_ */

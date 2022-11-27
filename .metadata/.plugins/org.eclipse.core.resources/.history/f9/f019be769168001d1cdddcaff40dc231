@@ -1,0 +1,14 @@
+/*
+ * mode.h
+ *
+ *  Created on: Nov 20, 2022
+ *      Author: duyvt
+ */
+
+#ifndef INC_MODE_H_
+#define INC_MODE_H_
+
+extern int mode;
+void mode_run();
+
+#endif /* INC_MODE_H_ */

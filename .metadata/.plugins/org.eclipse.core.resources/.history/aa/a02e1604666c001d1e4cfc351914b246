@@ -1,0 +1,70 @@
+/*
+ * trafficlight.c
+ *
+ *  Created on: Nov 24, 2022
+ *      Author: duyvt
+ */
+
+#include "trafficlight.h"
+
+int redTime =0, greenTime =0, yellowTime =0;
+
+void traficLightRun(){
+	if (timer2_flag == 1){
+		switch (lightState0){
+		case LIGHT_INIT:
+			lightState0 = LIGHT_RED;
+			setTimer2(3);
+			break;
+		case LIGHT_RED:
+			HAL_GPIO_WritePin(GPIOA, RED0_Pin, 0);
+			HAL_GPIO_WritePin(GPIOA, GREEN0_Pin, 1);
+			HAL_GPIO_WritePin(GPIOA, YELLOW0_Pin, 1);
+			setTimer2(greenTime*10);
+			break;
+		case LIGHT_GREEN:
+			HAL_GPIO_WritePin(GPIOA, RED0_Pin, 1);
+			HAL_GPIO_WritePin(GPIOA, GREEN0_Pin, 1);
+			HAL_GPIO_WritePin(GPIOA, YELLOW0_Pin, 0);
+			setTimer2(yellowTime*10);
+			break;
+		case LIGHT_YELLOW:
+			HAL_GPIO_WritePin(GPIOA, RED0_Pin, 1);
+			HAL_GPIO_WritePin(GPIOA, GREEN0_Pin, 1);
+			HAL_GPIO_WritePin(GPIOA, YELLOW0_Pin, 0);
+			setTimer2(redTime*10);
+			break;
+		default:
+			break;
+		}
+	}
+
+	if (timer3_flag ==1){
+		switch (lightState1){
+		case LIGHT_INIT:
+			lightState1 = LIGHT_GREEN;
+			setTimer3(5);
+			break;
+		case LIGHT_GREEN:
+			HAL_GPIO_WritePin(GPIOA, RED1_Pin, 1);
+			HAL_GPIO_WritePin(GPIOA, GREEN1_Pin, 0);
+			HAL_GPIO_WritePin(GPIOA, YELLOW1_Pin, 1);
+			setTimer2(yellowTime*10);
+			break;
+		case LIGHT_YELLOW:
+			HAL_GPIO_WritePin(GPIOA, RED1_Pin, 1);
+			HAL_GPIO_WritePin(GPIOA, GREEN1_Pin, 1);
+			HAL_GPIO_WritePin(GPIOA, YELLOW1_Pin, 0);
+			setTimer2(redTime*10);
+			break;
+		case LIGHT_RED:
+			HAL_GPIO_WritePin(GPIOA, RED1_Pin, 0);
+			HAL_GPIO_WritePin(GPIOA, GREEN1_Pin, 1);
+			HAL_GPIO_WritePin(GPIOA, YELLOW1_Pin, 1);
+			setTimer2(greenTime*10);
+			break;
+		default:
+			break;
+		}
+	}
+}

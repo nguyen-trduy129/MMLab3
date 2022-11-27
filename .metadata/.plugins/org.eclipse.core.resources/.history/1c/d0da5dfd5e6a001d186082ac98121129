@@ -1,0 +1,69 @@
+/*
+ * mode.c
+ *
+ *  Created on: Nov 20, 2022
+ *      Author: duyvt
+ */
+
+#include "mode.h"
+
+int mode =0;
+
+void modeRun(){
+	switch (mode){
+	case MOD_INIT:
+		mode =1;
+		break;
+	case MOD_LED7_1:
+		lightStatus = AUTO_MOD;
+		setTimer2(3);
+
+		if (isButton1Pressed()){
+			mode =2;
+		}
+
+		if (isButton3Pressed()){
+			mode =1;
+		}
+		break;
+	case MOD_LED7_2:
+		lightStatus = MAN_RED;
+		setTimer2(3);
+
+		if (isButton1Pressed()){
+			mode=3;
+		}
+
+		if (isButton3Pressed()){
+			mode=1;
+		}
+		break;
+	case MOD_LED7_3:
+		lightStatus = MAN_YELLOW;
+		setTimer2(3);
+
+		if (isButton1Pressed()){
+			mode=4;
+		}
+		break;
+
+		if (isButton3Pressed()){
+			mode=1;
+		}
+	case MOD_LED7_4:
+		lightStatus = MAN_GREEN;
+		setTimer2(3);
+
+		if (isButton1Pressed()){
+			mode =1;
+		}
+
+		if (isButton3Pressed()){
+			mode =1;
+		}
+		break;
+
+	default:
+		break;
+	}
+}

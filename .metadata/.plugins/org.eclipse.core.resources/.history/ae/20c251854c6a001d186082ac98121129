@@ -1,0 +1,21 @@
+/*
+ * fsm_manual.c
+ *
+ *  Created on: Nov 22, 2022
+ *      Author: duyvt
+ */
+
+#include "fsm_manual.h"
+
+void fsm_manual_run(){
+	switch (lightStatus){
+	case MAN_RED:
+		break;
+	case MAN_YELLOW:
+		break;
+	case MAN_GREEN:
+		break;
+	default:
+		break;
+	}
+}

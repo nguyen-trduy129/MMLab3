@@ -1,0 +1,19 @@
+/*
+ * fsm_automatic.h
+ *
+ *  Created on: Nov 22, 2022
+ *      Author: duyvt
+ */
+
+#ifndef INC_FSM_AUTOMATIC_H_
+#define INC_FSM_AUTOMATIC_H_
+
+#include "global.h"
+
+ extern int red0, red1;
+ extern int yellow0, yellow1;
+ extern int green0, green1;
+
+void fsm_automaticRun();
+
+#endif /* INC_FSM_AUTOMATIC_H_ */

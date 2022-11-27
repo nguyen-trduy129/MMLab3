@@ -1,0 +1,14 @@
+/*
+ * mode.c
+ *
+ *  Created on: Nov 20, 2022
+ *      Author: duyvt
+ */
+
+#include "mode.h"
+
+int mode =0;
+
+void modeRun(){
+
+}

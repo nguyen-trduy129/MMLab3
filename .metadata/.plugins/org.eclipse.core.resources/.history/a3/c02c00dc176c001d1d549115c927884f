@@ -1,0 +1,13 @@
+/*
+ * trafficlight.c
+ *
+ *  Created on: Nov 24, 2022
+ *      Author: duyvt
+ */
+
+#include "trafficlight.h"
+
+int redTime =0, yellowTime =0, greenTime =0;
+int red0 =0, red1 =0;
+int yellow0 =0, yellow1 =0;
+int green0 =0, green1 =0;

@@ -1,0 +1,11 @@
+/*
+ * global.c
+ *
+ *  Created on: Nov 20, 2022
+ *      Author: duyvt
+ */
+
+#include "global.h"
+
+int mode = MOD_INIT;
+int lightStatus = LIGHT_INIT;

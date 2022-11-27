@@ -1,0 +1,44 @@
+/*
+ * global.h
+ *
+ *  Created on: Nov 20, 2022
+ *      Author: duyvt
+ */
+
+#ifndef INC_GLOBAL_H_
+#define INC_GLOBAL_H_
+
+#include "main.h"
+
+extern int mode;
+extern int lightStatus;
+extern int led7Status;
+
+#define	LED_INIT		0
+#define MAN_RED			1
+#define MAN_YELLOW		2
+#define MAN_GREEN		3
+
+#define	AUTO_RED		11
+#define	AUTO_YELLOW		12
+#define	AUTO_GREEN		13
+
+#define	MOD_LED7_1		20
+#define MOD_LED7_2		21
+#define MOD_LED7_3		22
+#define	MOD_LED7_4		23
+
+#define	VAL_LED7_0		30
+#define VAL_LED7_1		31
+#define VAL_LED7_2		32
+#define VAL_LED7_3		33
+#define VAL_LED7_4		34
+#define VAL_LED7_5		35
+#define VAL_LED7_6		36
+#define VAL_LED7_7		37
+#define VAL_LED7_8		38
+#define VAL_LED7_9		39
+
+
+
+#endif /* INC_GLOBAL_H_ */

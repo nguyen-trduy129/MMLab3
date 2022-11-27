@@ -1,0 +1,29 @@
+/*
+ * global.h
+ *
+ *  Created on: Nov 24, 2022
+ *      Author: duyvt
+ */
+
+#ifndef INC_GLOBAL_H_
+#define INC_GLOBAL_H_
+
+#include "main.h"
+#include "software_timer.h"
+#include "mode.h"
+#include "button.h"
+#include "led7seg.h"
+#include "trafficlight.h"
+
+extern int mode;
+extern int lightState;
+
+#define INIT		0
+#define MOD1		1
+#define MOD2		2
+#define MOD3		3
+#define MOD4		4
+
+
+
+#endif /* INC_GLOBAL_H_ */

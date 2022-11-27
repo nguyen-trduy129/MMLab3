@@ -1,0 +1,23 @@
+12:41:45 **** Incremental Build of configuration Debug for project Ex1.2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/trafficlight.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/trafficlight.d" -MT"Core/Src/trafficlight.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/trafficlight.o"
+arm-none-eabi-gcc -o "Ex1.2.elf" @"objects.list"   -mcpu=cortex-m3 -T"E:\Files\Flexible\Microcotroller- Microprocessor\LAB\Lab3\Ex1.2\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Ex1.2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Ex1.2.elf
+ 
+arm-none-eabi-size   Ex1.2.elf 
+arm-none-eabi-objdump -h -S  Ex1.2.elf  > "Ex1.2.list"
+arm-none-eabi-objcopy  -O ihex  Ex1.2.elf  "Ex1.2.hex"
+arm-none-eabi-objcopy  -O binary  Ex1.2.elf  "Ex1.2.bin"
+   text	   data	    bss	    dec	    hex	filename
+  10476	     92	   1716	  12284	   2ffc	Ex1.2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Ex1.2.bin
+Finished building: Ex1.2.hex
+ 
+ 
+Finished building: Ex1.2.list
+ 
+
+12:41:46 Build Finished. 0 errors, 0 warnings. (took 1s.6ms)
+

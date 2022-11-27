@@ -1,0 +1,121 @@
+/*
+ * led7seg.c
+ *
+ *  Created on: Nov 24, 2022
+ *      Author: duyvt
+ */
+
+#include "led7seg.h"
+
+int led7buffer[4] = {0, 0, 0, 0};
+int index_led =0;
+
+void dis7SEG(int number){
+	switch(number){
+	case 0:
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(0x003f), 0);
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(~0x003f), 1);
+		break;
+	case 1:
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(0x0006), 0);
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(~0x0006), 1);
+		break;
+	case 2:
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(0x005b), 0);
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(~0x005b), 1);
+		break;
+	case 3:
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(0x004f), 0);
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(~0x004f), 1);
+		break;
+	case 4:
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(0x0066), 0);
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(~0x0066), 1);
+		break;
+	case 5:
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(0x006d), 0);
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(~0x006d), 1);
+		break;
+	case 6:
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(0x007d), 0);
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(~0x007d), 1);
+		break;
+	case 7:
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(0x0007), 0);
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(~0x0007), 1);
+		break;
+	case 8:
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(0x007f), 0);
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(~0x007f), 1);
+		break;
+	case 9:
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(0x006f), 0);
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(~0x006f), 1);
+		break;
+	default:
+		HAL_GPIO_WritePin(GPIOB, (uint16_t)(0x00ff), 1);
+		break;
+	}
+}
+
+void clearAllSeg(){
+	 HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
+	 HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
+	 HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
+	 HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 1);
+}
+
+void update7SEG(int index){
+	switch (index){
+	case 0:
+		HAL_GPIO_WritePin(GPIOA, EN3_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, EN0_Pin, 0);
+		break;
+	case 1:
+		HAL_GPIO_WritePin(GPIOA, EN0_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, EN1_Pin, 0);
+		break;
+	case 2:
+		HAL_GPIO_WritePin(GPIOA, EN1_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, EN2_Pin, 0);
+		break;
+	case 3:
+		HAL_GPIO_WritePin(GPIOA, EN2_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, EN3_Pin, 0);
+		break;
+	default:
+		break;
+	}
+}
+
+void led7SEGRun(int* led7buffer, int index_led){
+	if (timer4_flag ==1){
+		setTimer4(20);
+		clearAllSeg();
+
+		switch(index_led){
+		case 0:
+			update7SEG(index_led);
+			dis7SEG(led7buffer[index_led]);
+			index_led++;
+			break;
+		case 1:
+			update7SEG(index_led);
+			dis7SEG(led7buffer[index_led]);
+			index_led++;
+			break;
+		case 2:
+			update7SEG(index_led);
+			dis7SEG(led7buffer[index_led]);
+			index_led++;
+			break;
+		case 3:
+			update7SEG(index_led);
+			dis7SEG(led7buffer[index_led]);
+			index_led=0;
+			break;
+		default:
+			break;
+		}
+	}
+}

@@ -1,0 +1,21 @@
+/*
+ * led7seg.h
+ *
+ *  Created on: Nov 24, 2022
+ *      Author: duyvt
+ */
+
+#ifndef INC_LED7SEG_H_
+#define INC_LED7SEG_H_
+
+#include "global.h"
+
+extern int led7buffer[4];
+extern int index_led;
+
+void dis7SEG(int number);
+void clearAllSeg();
+void update7SEG(int index);
+void led7SEGRun(int*);
+
+#endif /* INC_LED7SEG_H_ */

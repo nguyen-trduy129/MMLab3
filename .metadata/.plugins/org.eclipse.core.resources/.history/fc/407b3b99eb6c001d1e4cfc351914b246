@@ -1,0 +1,22 @@
+/*
+ * trafficlight.h
+ *
+ *  Created on: Nov 24, 2022
+ *      Author: duyvt
+ */
+
+#ifndef INC_TRAFFICLIGHT_H_
+#define INC_TRAFFICLIGHT_H_
+
+#include "global.h"
+
+extern int redTime;
+extern int greenTime;
+extern int yellowTime;
+
+void trafficLightRun();
+void ledRedBlink();
+void ledGreenBlink();
+void ledYellowBlink();
+
+#endif /* INC_TRAFFICLIGHT_H_ */

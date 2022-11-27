@@ -1,0 +1,32 @@
+/*
+ * mode.c
+ *
+ *  Created on: Nov 20, 2022
+ *      Author: duyvt
+ */
+
+#include "mode.h"
+
+int mode =0;
+
+void modeRun(){
+	switch (mode){
+	case MOD_INIT:
+		break;
+
+	case MOD_LED7_1:
+		break;
+
+	case MOD_LED7_2:
+		break;
+
+	case MOD_LED7_3:
+		break;
+
+	case MOD_LED7_4:
+		break;
+
+	default:
+		break;
+	}
+}

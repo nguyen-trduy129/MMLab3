@@ -1,0 +1,19 @@
+/*
+ * global.c
+ *
+ *  Created on: Nov 24, 2022
+ *      Author: duyvt
+ */
+
+#include "global.h"
+
+int mode =0;
+int lightState0 =0;
+int lightState1 =0;
+
+void ledBlink(){
+	if (timer1_flag ==1){
+		HAL_GPIO_TogglePin(DOT_LED_GPIO_Port, DOT_LED_Pin);
+		setTimer1(50);
+	}
+}

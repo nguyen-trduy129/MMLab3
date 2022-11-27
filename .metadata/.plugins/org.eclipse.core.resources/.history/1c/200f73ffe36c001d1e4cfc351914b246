@@ -1,0 +1,179 @@
+/*
+ * trafficlight.c
+ *
+ *  Created on: Nov 24, 2022
+ *      Author: duyvt
+ */
+
+#include "trafficlight.h"
+
+int redTime =0, greenTime =0, yellowTime =0;
+
+void trafficLightRun(){
+	//way1
+	switch (lightState0){
+	case LIGHT_INIT:
+		lightState0 =LIGHT_RED;
+		setTimer2(redTime*10 +3);
+		break;
+	case LIGHT_RED:
+		HAL_GPIO_WritePin(GPIOA, RED0_Pin, 0);
+		HAL_GPIO_WritePin(GPIOA, GREEN0_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, YELLOW0_Pin, 1);
+
+		if (timer2_flag ==1){
+			lightState0 =LIGHT_GREEN;
+			setTimer2(greenTime*10);
+		}
+
+		if (mode ==2){
+			setTimer2(3);
+			lightState0 = RED_BLINK;
+		}
+		break;
+	case LIGHT_GREEN:
+		HAL_GPIO_WritePin(GPIOA, RED0_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, GREEN0_Pin, 0);
+		HAL_GPIO_WritePin(GPIOA, YELLOW0_Pin, 1);
+
+		if (timer2_flag ==1){
+			lightState0 =LIGHT_YELLOW;
+			setTimer2(yellowTime*10);
+		}
+
+		if (mode ==2){
+			setTimer2(3);
+			lightState0 = RED_BLINK;
+		}
+		break;
+	case LIGHT_YELLOW:
+		HAL_GPIO_WritePin(GPIOA, RED0_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, GREEN0_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, YELLOW0_Pin, 0);
+
+		if (timer2_flag ==1){
+			lightState0 =LIGHT_RED;
+			setTimer2(redTime*10);
+		}
+
+		if (mode ==2){
+			setTimer2(3);
+			lightState0 = RED_BLINK;
+		}
+		break;
+
+	case RED_BLINK:
+		HAL_GPIO_WritePin(GPIOA, YELLOW1_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, GREEN1_Pin, 1);
+
+		if (timer2_flag ==1){
+			HAL_GPIO_TogglePin(GPIOA, RED1_Pin);
+			lightState1 =RED_BLINK;
+			setTimer2(25);
+		}
+
+		if (mode == 3){
+			setTimer2(3);
+			lightState0 = YELLOW_BLINK;
+		}
+		break;
+	case YELLOW_BLINK:
+		HAL_GPIO_WritePin(GPIOA, RED1_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, GREEN1_Pin, 1);
+
+		if (timer2_flag ==1){
+			HAL_GPIO_TogglePin(GPIOA, YELLOW1_Pin);
+			lightState1 =RED_BLINK;
+			setTimer2(25);
+		}
+
+		if (mode == 3){
+			setTimer2(3);
+			lightState0 = GREEN_BLINK;
+		}
+		break;
+	case GREEN_BLINK:
+		HAL_GPIO_WritePin(GPIOA, RED1_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, YELLOW1_Pin, 1);
+
+		if (timer2_flag ==1){
+			HAL_GPIO_TogglePin(GPIOA, GREEN1_Pin);
+			lightState1 =RED_BLINK;
+			setTimer2(25);
+		}
+		break;
+	default:
+		break;
+	}
+
+	//way 2
+	switch(lightState1){
+	case LIGHT_INIT:
+		lightState1 =LIGHT_GREEN;
+		setTimer3(greenTime*10 +5);
+		break;
+	case LIGHT_GREEN:
+		HAL_GPIO_WritePin(GPIOA, RED0_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, GREEN0_Pin, 0);
+		HAL_GPIO_WritePin(GPIOA, YELLOW0_Pin, 1);
+
+		if (timer3_flag ==1){
+			lightState1 = LIGHT_RED;
+			setTimer3(redTime*10);
+		}
+		break;
+	case LIGHT_RED:
+		HAL_GPIO_WritePin(GPIOA, RED0_Pin, 0);
+		HAL_GPIO_WritePin(GPIOA, GREEN0_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, YELLOW0_Pin, 1);
+
+		if (timer3_flag ==1){
+			lightState1 = LIGHT_YELLOW;
+			setTimer3(yellowTime*10);
+		}
+		break;
+	case LIGHT_YELLOW:
+		HAL_GPIO_WritePin(GPIOA, RED0_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, GREEN0_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, YELLOW0_Pin, 0);
+
+		if (timer3_flag ==1){
+			lightState1 = LIGHT_RED;
+			setTimer3(redTime*10);
+		}
+		break;
+	case RED_BLINK:
+		HAL_GPIO_WritePin(GPIOA, YELLOW1_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, GREEN1_Pin, 1);
+
+		if (timer3_flag ==1){
+			HAL_GPIO_TogglePin(GPIOA, RED1_Pin);
+			lightState1 =RED_BLINK;
+			setTimer3(25);
+		}
+		break;
+	case YELLOW_BLINK:
+		HAL_GPIO_WritePin(GPIOA, RED1_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, GREEN1_Pin, 1);
+
+		if (timer3_flag ==1){
+			HAL_GPIO_TogglePin(GPIOA, YELLOW1_Pin);
+			lightState1 =RED_BLINK;
+			setTimer3(25);
+		}
+		break;
+	case GREEN_BLINK:
+		HAL_GPIO_WritePin(GPIOA, RED1_Pin, 1);
+		HAL_GPIO_WritePin(GPIOA, YELLOW1_Pin, 1);
+
+		if (timer3_flag ==1){
+			HAL_GPIO_TogglePin(GPIOA, GREEN1_Pin);
+			lightState1 =RED_BLINK;
+			setTimer3(25);
+		}
+		break;
+	default:
+		break;
+	}
+}
+

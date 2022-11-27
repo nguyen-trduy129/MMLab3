@@ -1,0 +1,95 @@
+/*
+ * mode.c
+ *
+ *  Created on: Nov 24, 2022
+ *      Author: duyvt
+ */
+
+#include "mode.h"
+
+void modeRun(){
+	switch(mode){
+	case INIT:
+		mode =1;
+		break;
+	case MOD1:
+		trafficLightRun();
+		led7buffer[0] =1;
+		led7buffer[1] =1;
+		led7buffer[3] =-1;
+		led7buffer[4] =-1;
+		led7SEGRun();
+
+		if (isButton1Pressed()){
+			mode =2;
+		}
+		break;
+	case MOD2:
+		trafficLightRun();
+		led7buffer[0] =2;
+		led7buffer[1] =2;
+		led7buffer[3] =redTime/10;
+		led7buffer[4] =redTime%10;
+		led7SEGRun();
+
+		if (isButton1Pressed()){
+			mode =3;
+		}
+
+		if (isButton2Pressed()){
+			if (redTime <99) redTime++;
+			else redTime =0;
+		}
+
+		if (isButton3Pressed()){
+			mode =1;
+		}
+		break;
+	case MOD3:
+		trafficLightRun();
+		led7buffer[0] =2;
+		led7buffer[1] =2;
+		led7buffer[3] =yellowTime/10;
+		led7buffer[4] =yellowTime%10;
+		led7SEGRun();
+
+		if (isButton1Pressed()){
+			mode =4;
+		}
+
+		if (isButton2Pressed()){
+			if (yellowTime <99) yellowTime++;
+			else yellowTime =0;
+		}
+
+		if (isButton3Pressed()){
+			mode =1;
+		}
+		break;
+	case MOD4:
+		trafficLightRun();
+		led7buffer[0] =2;
+		led7buffer[1] =2;
+		led7buffer[3] =yellowTime/10;
+		led7buffer[4] =yellowTime%10;
+		led7SEGRun();
+
+		if (isButton1Pressed()){
+			mode =1;
+		}
+
+		if (isButton2Pressed()){
+			if (greenTime <99) greenTime++;
+			else greenTime=0;
+		}
+
+		if (isButton3Pressed()){
+			mode =1;
+		}
+		break;
+	default:
+		break;
+	}
+}
+
+

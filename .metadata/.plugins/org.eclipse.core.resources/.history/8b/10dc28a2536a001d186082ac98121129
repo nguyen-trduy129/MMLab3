@@ -1,0 +1,54 @@
+/*
+ * fsm_manual.c
+ *
+ *  Created on: Nov 22, 2022
+ *      Author: duyvt
+ */
+
+#include "fsm_manual.h"
+
+void fsm_manual_run(){
+	switch (lightStatus){
+	case MAN_RED:
+		if (timer2_flag ==1){
+			HAL_GPIO_TogglePin(GPIOA, LED_RED_0_Pin);
+			HAL_GPIO_TogglePin(GPIOA, LED_RED_1_Pin);
+		}
+
+		if (isButton2Pressed()){
+			if (redTime == 99) redTime =0;
+			else redTime ++;
+		}
+
+		setTimer2(25);
+		break;
+	case MAN_YELLOW:
+		if (timer2_flag ==1){
+			HAL_GPIO_TogglePin(GPIOA, LED_YELLOW_0_Pin);
+			HAL_GPIO_TogglePin(GPIOA, LED_YELLOW_1_Pin);
+		}
+
+		if (isButton2Pressed()){
+			if (yellowTime == 99) yellowTime =0;
+			else yellowTime ++;
+		}
+
+		setTimer2(25);
+		break;
+	case MAN_GREEN:
+		if (timer2_flag ==1){
+			HAL_GPIO_TogglePin(GPIOA, LED_GREEN_0_Pin);
+			HAL_GPIO_TogglePin(GPIOA, LED_GREEN_1_Pin);
+		}
+
+		if (isButton2Pressed()){
+			if (greenTime == 99) greenTime =0;
+			else greenTime ++;
+		}
+
+		setTimer2(25);
+		break;
+	default:
+		break;
+	}
+}

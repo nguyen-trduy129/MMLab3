@@ -1,0 +1,20 @@
+/*
+ * fsm_automatic.h
+ *
+ *  Created on: Nov 22, 2022
+ *      Author: duyvt
+ */
+
+#include "fsm_automatic.c"
+
+int red0 = redTime, red1 = redTime;
+int yellow0 = yellowTime, yellow1 = yellowTime;
+int green0 = greenTime, green1 = greenTime;
+
+void fsm_automaticRun() {
+	if (lightStatus == AUTO_MOD){
+		if (timer2_flag == 1){
+
+		}
+	}
+}

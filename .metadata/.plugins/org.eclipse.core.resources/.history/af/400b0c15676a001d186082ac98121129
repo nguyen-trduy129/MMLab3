@@ -1,0 +1,58 @@
+/*
+ * fsm_automatic.h
+ *
+ *  Created on: Nov 22, 2022
+ *      Author: duyvt
+ */
+
+#include "fsm_automatic.h"
+
+int red0 = redTime, red1 = redTime;
+int yellow0 = yellowTime, yellow1 = yellowTime;
+int green0 = greenTime, green1 = greenTime;
+
+void fsm_automaticRun() {
+	if (lightStatus == AUTO_MOD){
+		if (timer2_flag == 1){
+			if (red0 != 0){
+				HAL_GPIO_WritePin(GPIOA, LED_RED_0_Pin, 0);
+				HAL_GPIO_WritePin(GPIOA, LED_YELLOW_0_Pin, 1);
+				HAL_GPIO_WritePin(GPIOA, LED_GREEN_0_Pin, 1);
+
+				red0--;
+			}else if (green0 !=0){
+				HAL_GPIO_WritePin(GPIOA, LED_RED_0_Pin, 1);
+				HAL_GPIO_WritePin(GPIOA, LED_YELLOW_0_Pin, 1);
+				HAL_GPIO_WritePin(GPIOA, LED_GREEN_0_Pin, 0);
+
+				green0--;
+			}else if (yellow0 != 0){
+				HAL_GPIO_WritePin(GPIOA, LED_RED_0_Pin, 1);
+				HAL_GPIO_WritePin(GPIOA, LED_YELLOW_0_Pin, 0);
+				HAL_GPIO_WritePin(GPIOA, LED_GREEN_0_Pin, 1);
+
+				yellow0--;
+			}
+
+			if (green1 != 0){
+				HAL_GPIO_WritePin(GPIOA, LED_RED_1_Pin, 1);
+				HAL_GPIO_WritePin(GPIOA, LED_YELLOW_1_Pin, 1);
+				HAL_GPIO_WritePin(GPIOA, LED_GREEN_1_Pin, 0);
+
+				green1--;
+			}else if (yellow1 != 0){
+				HAL_GPIO_WritePin(GPIOA, LED_RED_1_Pin, 1);
+				HAL_GPIO_WritePin(GPIOA, LED_YELLOW_1_Pin, 0);
+				HAL_GPIO_WritePin(GPIOA, LED_GREEN_1_Pin, 1);
+
+				yellow1--;
+			}else if (red1 != 0){
+				HAL_GPIO_WritePin(GPIOA, LED_RED_1_Pin, 0);
+				HAL_GPIO_WritePin(GPIOA, LED_YELLOW_1_Pin, 1);
+				HAL_GPIO_WritePin(GPIOA, LED_GREEN_1_Pin, 1);
+
+				red1--;
+			}
+		}
+	}
+}

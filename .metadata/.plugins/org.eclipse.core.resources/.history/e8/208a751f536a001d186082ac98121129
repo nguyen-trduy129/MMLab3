@@ -1,0 +1,16 @@
+/*
+ * global.c
+ *
+ *  Created on: Nov 20, 2022
+ *      Author: duyvt
+ */
+
+#include "global.h"
+
+int lightStatus = LIGHT_INIT;
+int valStatus = VAL_INIT;
+
+int redTime =5;
+int yellowTime =5;
+int greenTime =5;
+int curentTime =redTime;

@@ -1,0 +1,69 @@
+/*
+ * mode.c
+ *
+ *  Created on: Nov 24, 2022
+ *      Author: duyvt
+ */
+
+#include "mode.h"
+int redTime =0, greenTime =0, yellowTime =0;
+
+void modeRun(){
+	switch(mode){
+	case INIT:
+		mode =1;
+		lightState0 =0;
+		lightState1 =0;
+		break;
+	case MOD1:
+		trafficLightRun();
+
+		if (isButton1Pressed()){
+			mode =2;
+		}
+		break;
+	case MOD2:
+		if (isButton1Pressed()){
+			mode =3;
+		}
+
+		if (isButton2Pressed()){
+
+		}
+
+		if (isButton3Pressed()){
+			mode =1;
+		}
+		break;
+	case MOD3:
+		if (isButton1Pressed()){
+			mode =4;
+		}
+
+		if (isButton2Pressed()){
+
+		}
+
+		if (isButton3Pressed()){
+			mode =1;
+		}
+		break;
+	case MOD4:
+		if (isButton1Pressed()){
+			mode =1;
+		}
+
+		if (isButton2Pressed()){
+
+		}
+
+		if (isButton3Pressed()){
+			mode =1;
+		}
+		break;
+	default:
+		break;
+	}
+}
+
+

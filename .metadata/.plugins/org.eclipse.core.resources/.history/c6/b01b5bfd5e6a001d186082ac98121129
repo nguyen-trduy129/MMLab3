@@ -1,0 +1,12 @@
+/*
+ * fsm_automatic.h
+ *
+ *  Created on: Nov 22, 2022
+ *      Author: duyvt
+ */
+
+#include "fsm_automatic.h"
+
+void fsm_automaticRun() {
+	if ()
+}
